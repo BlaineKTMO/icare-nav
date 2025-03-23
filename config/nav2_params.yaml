@@ -1,0 +1,33 @@
+/**:
+  ros__parameters:
+    use_sim_time: False
+
+    # Costmap parameters
+    local_costmap:
+      ros__parameters:
+        global_frame: base_link
+        robot_base_frame: base_link
+        update_frequency: 5.0
+        publish_frequency: 2.0
+        rolling_window: true
+        width: 5.0
+        height: 5.0
+        resolution: 0.05
+        robot_radius: 0.3
+        always_send_full_costmap: true
+        plugins: ["laser_layer", "inflation_layer"]
+        laser_layer:
+          plugin: "nav2_costmap_2d::LaserLayer"
+          enabled: true
+          topic: /scan
+          sensor_frame: base_scan
+          obstacle_range: 5.0
+          raytrace_range: 5.5
+          clearing: true
+          marking: true
+          inf_is_valid: false
+          observation_persistence: 0.0
+        inflation_layer:
+          plugin: "nav2_costmap_2d::InflationLayer"
+          inflation_radius: 0.55
+          cost_scaling_factor: 2.58 
